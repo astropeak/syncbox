@@ -1,0 +1,28 @@
+* Syncbox
+** implement in c++
+*** design
+    Sun Sep 11 23:47:27 2016
+    | class            | function                                                      |
+    |------------------+---------------------------------------------------------------|
+    | File             | write local file to and from server.Abstract                  |
+    | LocalFile        | An implementation of File                                     |
+    | FileDecorator    | An subclass of File, update version when write or read files. |
+    |                  | use decorator pattern                                         |
+    | Checker          | Abstract. check if client file is newer or older than server  |
+    | TimeStampChecker | An implementation of Checker. Use time stamp to check         |
+    |                  | But now just a stub                                           |
+    | Version          | get or set file version on client and server side             |
+    | PullTrans        | Implement the pull transction.                                |
+    |                  | Strategy pattern used.                                        |
+    I think the design is quite good!
+    Note:
+    - File should not contains any member variable. since FileDecorator derived form it, but it will not use any of its member variable.
+    - Don't know if some parameter should be passed to construtor or memeber function.
+    - Decorator patter is powerful to add new functions to a class without modifying the class's implementation and the client code. Here when it is added, both PullTrans and LocalFile are not modified. Only test.cpp modified to create a FileDecorator object and pass to PullTrans.
+    - The design is quite flexiable. You can add new subclass to File to change the storing method. You can add new subclass to Checker to implement new check algorithm.
+
+
+*** compile and run
+    #+begin_src sh
+    g++ LocalFile.cpp test.cpp && ./a.out
+    #+end_src
