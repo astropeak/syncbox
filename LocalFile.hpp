@@ -7,7 +7,7 @@ class LocalFile:public File {
 public:
     int write(void);
     int read(void);
-    LocalFile(string destDir, string name, string dir);
+    LocalFile(const string& destDir, const string& name, const string& dir);
     virtual ~LocalFile(){};
 private:
     string itsDestDir;

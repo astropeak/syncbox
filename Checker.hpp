@@ -4,7 +4,7 @@
 class Checker{
 public:
     virtual int execute(void) = 0;
-    Checker(string destDir, string name, string dir):itsDestDir(destDir), itsName(name), itsDir(dir) {
+    Checker(string& destDir, string& name, string& dir):itsDestDir(destDir), itsName(name), itsDir(dir) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
 private:

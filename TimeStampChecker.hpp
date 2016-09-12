@@ -10,7 +10,7 @@ public:
         return SERVER_NEW;
         // return CLIENT_NEW;
     }
-    TimeStampChecker(string destDir, string name, string dir):Checker(destDir, name, dir){
+    TimeStampChecker(string& destDir, string& name, string& dir):Checker(destDir, name, dir){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
 private:

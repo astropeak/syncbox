@@ -11,7 +11,7 @@ class File {
 public:
     virtual int write(void) = 0;
     virtual int read(void) = 0;
-    File(string name, string dir):itsName(name),itsDir(dir) {
+    File(const string& name, const string& dir):itsName(name),itsDir(dir) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         cout<<" name: "<<name<<", dir: "<<dir<<endl;
     }
