@@ -10,7 +10,7 @@ public:
     LocalFile(const string& destDir, const string& name, const string& dir);
     virtual ~LocalFile(){};
 private:
-    string itsDestDir;
+    const string& itsDestDir;
 };
 
 #endif /* LOCAL_FILE_H */

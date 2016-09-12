@@ -15,13 +15,13 @@ public:
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         cout<<" name: "<<name<<", dir: "<<dir<<endl;
     }
-    File(void){
+    File(void):itsName(""), itsDir(""){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
     virtual ~File() {};
-private:
-    string itsName;
-    string itsDir;
+protected:
+    const string& itsName;
+    const string& itsDir;
 };
 
 #endif /* FILE_H */

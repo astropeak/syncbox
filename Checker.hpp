@@ -7,7 +7,7 @@ public:
     Checker(string& destDir, string& name, string& dir):itsDestDir(destDir), itsName(name), itsDir(dir) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
-private:
+protected:
     string itsDestDir;
     string itsName;
     string itsDir;
@@ -16,5 +16,6 @@ private:
 static const int SERVER_NEW=1;
 static const int CLIENT_NEW=2;
 static const int BOTH_NEW=3;
+static const int EQUAL=4;
 
 #endif /* CHECKER_H */

@@ -6,7 +6,7 @@
 
 class FileDecorator:public File {
 public:
-    FileDecorator(File* file):itsFile(file) {
+    FileDecorator(File* file, Version& ver):itsFile(file),itsVer(ver) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
 
@@ -15,30 +15,25 @@ public:
         itsFile->write();
 
         // update version info;
-        Version ver(CLIENT);
-        int v=ver.read();
-        ver.write(v+1);
-        Version ver1(SERVER);
-        int v1 = ver.read();
+        int v=itsVer.read(CLIENT);
+        int v1 = itsVer.read(SERVER);
         if (v != v1) {
             cout<<"### ERROR ###, version not equal!!"<<endl;
         }
-        ver1.write(v+1);
+        itsVer.write(SERVER, v+1);
     }
     int read(void){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile->read();
 
         // update version info;
-        Version ver1(SERVER);
-        int v1 = ver1.read();
-
-        Version ver(CLIENT);
-        ver.write(v1);
+        int v1 = itsVer.read(SERVER);
+        itsVer.write(CLIENT, v1);
     }
 
 private:
     File* itsFile;
+    Version itsVer;
 };
 
 #endif /* FILEDECORATOR_H */
