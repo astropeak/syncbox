@@ -1,8 +1,7 @@
 #include "LocalFile.hpp"
 #include "TimeStampChecker.hpp"
 #include "VersionChecker.hpp"
-// #include "PullTrans.hpp"
-#include "PushTrans.hpp"
+#include "SyncTrans.hpp"
 #include "FileDecorator.hpp"
 #include "PathFileID.hpp"
 
@@ -19,13 +18,11 @@ int main(int argc, char *argv[])
     File* file = new FileDecorator(file1, *ver);
     // Checker* chk=new TimeStampChecker(destDir, name, dir);
     Checker* chk=new VersionChecker(destDir, name, dir);
-    // PullTrans pullTrans(file, chk);
-    // pullTrans.execute();
 
-    PushTrans pushTrans(file, chk);
+    SyncTrans syncTrans(file, chk);
     // FileID* to= new PathFileID(name);
     string from=dir+"/"+name;
-    pushTrans.execute(from, PathFileID(name));
+    syncTrans.execute(from, PathFileID(name));
 
     return 0;
 }
