@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     string destDir = "/home/astropeak/tmp/localFile";
     string name=        "tmp/github/files/README.md";
-    string dir = "home/astropeak";
+    string dir = "/cygdrive/e/home";
 
     File* file1 =new LocalFile(destDir, name, dir);
     Version* ver = new Version(destDir, name, dir);

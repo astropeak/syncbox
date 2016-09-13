@@ -11,6 +11,7 @@ public:
     virtual ~LocalFile(){};
 private:
     const string& itsDestDir;
+    int copy(const string& name, const string& dir, const string& destDir);
 };
 
 #endif /* LOCAL_FILE_H */
