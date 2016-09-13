@@ -5,23 +5,14 @@
 
 #include <iostream>
 #include <string>
+#include "FileID.hpp"
+
 using namespace std;
 
 class File {
 public:
-    virtual int write(void) = 0;
-    virtual int read(void) = 0;
-    File(const string& name, const string& dir):itsName(name),itsDir(dir) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        cout<<" name: "<<name<<", dir: "<<dir<<endl;
-    }
-    File(void):itsName(""), itsDir(""){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-    }
-    virtual ~File() {};
-protected:
-    const string& itsName;
-    const string& itsDir;
+    virtual int write(const string& from, const FileID* to) = 0;
+    virtual int read(const FileID* from, const string& to) = 0;
 };
 
 #endif /* FILE_H */

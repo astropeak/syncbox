@@ -3,12 +3,12 @@
 
 class PushTrans {
 public:
-    int execute(void) {
+    int execute(const string& from, const FileID* to) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         int status = itsChk->execute();
         if (status == CLIENT_NEW) {
             cout<<" Client new, push it to server"<<endl;
-            itsFile->write();
+            itsFile->write(from, to);
         } else if (status == SERVER_NEW){
             cout<<" Server new, do nothing"<<endl;
         } else {
