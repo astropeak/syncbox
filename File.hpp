@@ -11,8 +11,8 @@ using namespace std;
 
 class File {
 public:
-    virtual int write(const string& from, const FileID* to) = 0;
-    virtual int read(const FileID* from, const string& to) = 0;
+    virtual int write(const string& from, const FileID& to) = 0;
+    virtual int read(const FileID& from, const string& to) = 0;
 };
 
 #endif /* FILE_H */

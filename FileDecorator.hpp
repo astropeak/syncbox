@@ -10,7 +10,7 @@ public:
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
 
-    int write(const string& from, const FileID* to){
+    int write(const string& from, const FileID& to){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile->write(from, to);
 
@@ -22,7 +22,7 @@ public:
         }
         itsVer.write(SERVER, v+1);
     }
-    int read(const FileID* from, const string& to){
+    int read(const FileID& from, const string& to){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile->read(from, to);
 

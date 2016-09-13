@@ -23,9 +23,9 @@ int main(int argc, char *argv[])
     // pullTrans.execute();
 
     PushTrans pushTrans(file, chk);
-    FileID* to= new PathFileID(name);
+    // FileID* to= new PathFileID(name);
     string from=dir+"/"+name;
-    pushTrans.execute(from, to);
+    pushTrans.execute(from, PathFileID(name));
 
     return 0;
 }

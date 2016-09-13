@@ -3,7 +3,7 @@
 
 class PushTrans {
 public:
-    int execute(const string& from, const FileID* to) {
+    int execute(const string& from, const FileID& to) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         int status = itsChk->execute();
         if (status == CLIENT_NEW) {

@@ -10,14 +10,13 @@ using namespace boost::filesystem;
 
 class LocalFile:public File {
 public:
-    virtual int write(const string& from, const FileID* to){
+    virtual int write(const string& from, const FileID& to){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        cout<<to->getPath()<<endl;
-        copy(from, itsDestDir + "/" + to->getPath());
+        copy(from, itsDestDir + "/" + to.getPath());
     }
-    virtual int read(const FileID* from, const string& to){
+    virtual int read(const FileID& from, const string& to){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        copy(itsDestDir+"/"+from->getPath(), to);
+        copy(itsDestDir+"/"+from.getPath(), to);
     }
 
     static void setDestDir(const string& destDir){
