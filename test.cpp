@@ -24,7 +24,13 @@ int main(int argc, char *argv[])
     SyncTrans syncTrans(file, chk);
     // FileID* to= new PathFileID(name);
     string from=dir+"/"+name;
-    syncTrans.execute(from, PathFileID(name));
+    int t=0;
+    while(true) {
+        cout<<"\n==== "<<t<<" ====\n";
+        syncTrans.execute(from, PathFileID(name));
+        sleep(2);
+        t+=2;
+    }
 
     return 0;
 }

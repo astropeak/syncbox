@@ -12,8 +12,10 @@ public:
         } else if (status == SERVER_NEW){
             cout<<" Server new, pull it to client"<<endl;
             itsFile->read(server, client);
-        } else {
+        } else if (status == EQUAL){
             cout<<" Equal, do nothing"<<endl;
+        } else {
+            cout<<" ### ERROR ###, both changed"<<endl;
         }
     }
     SyncTrans(File* file, Checker* chk):itsFile(file), itsChk(chk) {
