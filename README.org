@@ -14,15 +14,19 @@
     | Version          | get or set file version on client and server side             |
     | PullTrans        | Implement the pull transction.                                |
     |                  | Strategy pattern used.                                        |
-    I think the design is quite good!
+    | FileID           | Abstraction of file path on server side                       |
+    | PathFileID       | Using relative path as file id on server side                 |
     Note:
     - File should not contains any member variable. since FileDecorator derived form it, but it will not use any of its member variable.
     - Don't know if some parameter should be passed to construtor or memeber function.
     - Decorator patter is powerful to add new functions to a class without modifying the class's implementation and the client code. Here when it is added, both PullTrans and LocalFile are not modified. Only test.cpp modified to create a FileDecorator object and pass to PullTrans.
     - The design is quite flexiable. You can add new subclass to File to change the storing method. You can add new subclass to Checker to implement new check algorithm.
-
+    - there is no file id on client side. A string represents its full path is used.
 
 *** compile and run
     #+begin_src sh
-    g++ LocalFile.cpp test.cpp && ./a.out
+    cd ANY_EMPTY_DIR
+    cmake PATH_TO_SYNCBOX_SRC_DIR # Generates makefile. only need to do one time
+    make # build
+    ./aaa #run
     #+end_src
