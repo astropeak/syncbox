@@ -3,14 +3,7 @@
 
 class Checker{
 public:
-    virtual int execute(void) = 0;
-    Checker(string& destDir, string& name, string& dir):itsDestDir(destDir), itsName(name), itsDir(dir) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-    }
-protected:
-    string itsDestDir;
-    string itsName;
-    string itsDir;
+    virtual int execute(const string& client, const FileID& server) = 0;
 };
 
 static const int SERVER_NEW=1;

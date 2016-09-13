@@ -1,6 +1,6 @@
 #include "LocalFile.hpp"
-#include "TimeStampChecker.hpp"
-#include "VersionChecker.hpp"
+#include "LocalTimeStampChecker.hpp"
+// #include "VersionChecker.hpp"
 #include "SyncTrans.hpp"
 #include "FileDecorator.hpp"
 #include "PathFileID.hpp"
@@ -17,7 +17,9 @@ int main(int argc, char *argv[])
     Version* ver = new Version(destDir, name, dir);
     File* file = new FileDecorator(file1, *ver);
     // Checker* chk=new TimeStampChecker(destDir, name, dir);
-    Checker* chk=new VersionChecker(destDir, name, dir);
+    // Checker* chk=new VersionChecker(destDir, name, dir);
+    Checker* chk=new LocalTimeStampChecker();
+    dynamic_cast<LocalTimeStampChecker*>(chk)->setDestDir(destDir);
 
     SyncTrans syncTrans(file, chk);
     // FileID* to= new PathFileID(name);

@@ -5,7 +5,7 @@ class SyncTrans {
 public:
     int execute(const string& client, const FileID& server) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        int status = itsChk->execute();
+        int status = itsChk->execute(client, server);
         if (status == CLIENT_NEW) {
             cout<<" Client new, push it to server"<<endl;
             itsFile->write(client, server);

@@ -34,6 +34,9 @@ private:
             create_directories(pdir);
         }
         copy_file(src, dest, copy_option::overwrite_if_exists);
+        //make modify time the same.
+        std::time_t t1=last_write_time(src);
+        last_write_time(dest, t1);
     }
     static string itsDestDir;
 };
