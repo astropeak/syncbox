@@ -11,18 +11,15 @@ int main(int argc, char *argv[])
     string name=        "tmp/github/files/README.md";
     string dir = "/cygdrive/e/home";
 
-    File* file1 =new LocalFile();
-    dynamic_cast<LocalFile*>(file1)->setDestDir(destDir);
+    LocalFile file1;
+    file1.setDestDir(destDir);
 
-    Version* ver = new Version(destDir, name, dir);
-    File* file = new FileDecorator(file1, *ver);
-    // Checker* chk=new TimeStampChecker(destDir, name, dir);
-    // Checker* chk=new VersionChecker(destDir, name, dir);
-    Checker* chk=new LocalTimeStampChecker();
-    dynamic_cast<LocalTimeStampChecker*>(chk)->setDestDir(destDir);
+    Version ver(destDir, name, dir);
+    FileDecorator file(file1, ver);
+    LocalTimeStampChecker chk;
+    chk.setDestDir(destDir);
 
     SyncTrans syncTrans(file, chk);
-    // FileID* to= new PathFileID(name);
     string from=dir+"/"+name;
     int t=0;
     while(true) {

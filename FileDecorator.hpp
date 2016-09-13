@@ -6,13 +6,13 @@
 
 class FileDecorator:public File {
 public:
-    FileDecorator(File* file, Version& ver):itsFile(file),itsVer(ver) {
+    FileDecorator(File& file, Version& ver):itsFile(file),itsVer(ver) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
 
     int write(const string& from, const FileID& to){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        itsFile->write(from, to);
+        itsFile.write(from, to);
 
         // update version info;
         int v=itsVer.read(CLIENT);
@@ -24,7 +24,7 @@ public:
     }
     int read(const FileID& from, const string& to){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        itsFile->read(from, to);
+        itsFile.read(from, to);
 
         // update version info;
         int v1 = itsVer.read(SERVER);
@@ -32,7 +32,7 @@ public:
     }
 
 private:
-    File* itsFile;
+    File& itsFile;
     Version itsVer;
 };
 

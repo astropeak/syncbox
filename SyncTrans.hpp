@@ -5,26 +5,26 @@ class SyncTrans {
 public:
     int execute(const string& client, const FileID& server) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        int status = itsChk->execute(client, server);
+        int status = itsChk.execute(client, server);
         if (status == CLIENT_NEW) {
             cout<<" Client new, push it to server"<<endl;
-            itsFile->write(client, server);
+            itsFile.write(client, server);
         } else if (status == SERVER_NEW){
             cout<<" Server new, pull it to client"<<endl;
-            itsFile->read(server, client);
+            itsFile.read(server, client);
         } else if (status == EQUAL){
             cout<<" Equal, do nothing"<<endl;
         } else {
             cout<<" ### ERROR ###, both changed"<<endl;
         }
     }
-    SyncTrans(File* file, Checker* chk):itsFile(file), itsChk(chk) {
+    SyncTrans(File& file, Checker& chk):itsFile(file), itsChk(chk) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         // do nothing
     }
 private:
-    Checker* itsChk;
-    File* itsFile;
+    Checker& itsChk;
+    File& itsFile;
 };
 
 #endif /* SYNCTRANS_H */
