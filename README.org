@@ -22,6 +22,21 @@
     - Decorator patter is powerful to add new functions to a class without modifying the class's implementation and the client code. Here when it is added, both PullTrans and LocalFile are not modified. Only test.cpp modified to create a FileDecorator object and pass to PullTrans.
     - The design is quite flexiable. You can add new subclass to File to change the storing method. You can add new subclass to Checker to implement new check algorithm.
     - there is no file id on client side. A string represents its full path is used.
+    
+    Problems:
+    - Maybe LocalTimeStampChecker is not needed. just like LocalVersionChecker was not needed. TimeStamp class should be created like Version class, and LocalTimeStamp is a implementation of it for local server. The class is used to get and set time stamp for files on both server and client side. Then TimeStampChecker can use a TimeStamp object to get the timestamp info. Thus a LocalTimeStampChecker can be removed.
+      Now LocalTimeStampChecker has two responsibility: get time stamp and compare time stamp. SRP rule is broken. But when I impelement it, I don't realize this.
+    - the ~const string& from~ parameter of File::write is not needed. Because it can be abtained from the ~const FileID& id~ parameter and a global CLIENT_HOME_DIR. This rule applys to many other classes that use two parameters.
+      #+begin_src C++ :includes <iostream>
+using namespace std;
+class File {
+public:
+    virtual int write(const string& from, const FileID& to) = 0;
+    virtual int read(const FileID& from, const string& to) = 0;
+};
+      #+end_src
+
+
 
 *** compile and run
     #+begin_src sh
