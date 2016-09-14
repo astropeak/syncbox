@@ -4,6 +4,7 @@
 #include "SyncTrans.hpp"
 #include "FileDecorator.hpp"
 #include "PathFileID.hpp"
+#include "LocalVersion.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +15,9 @@ int main(int argc, char *argv[])
     LocalFile file1;
     file1.setDestDir(destDir);
 
-    Version ver(destDir, name, dir);
+    LocalVersion ver;
+    ver.setDirs("/home/astropeak/.syncbox", destDir);
+
     FileDecorator file(file1, ver);
     LocalTimeStampChecker chk;
     chk.setDestDir(destDir);

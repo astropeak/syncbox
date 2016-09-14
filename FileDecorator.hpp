@@ -15,25 +15,25 @@ public:
         itsFile.write(from, to);
 
         // update version info;
-        int v=itsVer.read(CLIENT);
-        int v1 = itsVer.read(SERVER);
+        int v=itsVer.read(CLIENT, to);
+        int v1 = itsVer.read(SERVER, to);
         if (v != v1) {
             cout<<"### ERROR ###, version not equal!!"<<endl;
         }
-        itsVer.write(SERVER, v+1);
+        itsVer.write(SERVER, to, v+1);
     }
     int read(const FileID& from, const string& to){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile.read(from, to);
 
         // update version info;
-        int v1 = itsVer.read(SERVER);
-        itsVer.write(CLIENT, v1);
+        int v1 = itsVer.read(SERVER, from);
+        itsVer.write(CLIENT, from, v1);
     }
 
 private:
     File& itsFile;
-    Version itsVer;
+    Version& itsVer;
 };
 
 #endif /* FILEDECORATOR_H */
