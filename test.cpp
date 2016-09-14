@@ -1,10 +1,11 @@
 #include "LocalFile.hpp"
 #include "LocalTimeStampChecker.hpp"
-// #include "VersionChecker.hpp"
+#include "VersionChecker.hpp"
 #include "SyncTrans.hpp"
 #include "FileDecorator.hpp"
 #include "PathFileID.hpp"
 #include "LocalVersion.hpp"
+#include "VersionTimeStampChecker.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -18,11 +19,15 @@ int main(int argc, char *argv[])
     LocalVersion ver;
     ver.setDirs("/home/astropeak/.syncbox", destDir);
 
-    FileDecorator file(file1, ver);
-    LocalTimeStampChecker chk;
-    chk.setDestDir(destDir);
 
-    SyncTrans syncTrans(file, chk);
+    FileDecorator file(file1, ver);
+
+    LocalTimeStampChecker tsChk;
+    tsChk.setDestDir(destDir);
+    VersionChecker verChk(ver);
+    VersionTimeStampChecker verTsChk(verChk, tsChk);
+
+    SyncTrans syncTrans(file, verTsChk);
     string from=dir+"/"+name;
     int t=0;
     while(true) {

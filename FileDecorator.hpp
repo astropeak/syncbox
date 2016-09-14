@@ -20,6 +20,7 @@ public:
         if (v != v1) {
             cout<<"### ERROR ###, version not equal!!"<<endl;
         }
+        itsVer.write(CLIENT, to, v+1);
         itsVer.write(SERVER, to, v+1);
     }
     int read(const FileID& from, const string& to){

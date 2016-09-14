@@ -2,10 +2,10 @@
 #define LOCALTIMESTAMPCHECKER_H
 
 #include <boost/filesystem.hpp>
-#include "Checker.hpp"
+#include "TimeStampChecker.hpp"
 using namespace boost::filesystem;
 
-class LocalTimeStampChecker:public Checker{
+class LocalTimeStampChecker:public TimeStampChecker{
 public:
     static void setDestDir(const string& destDir){
         itsDestDir=destDir;

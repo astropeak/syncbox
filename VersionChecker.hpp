@@ -1,28 +1,26 @@
 #ifndef VERSIONCHECKER_H
 #define VERSIONCHECKER_H
 #include "Version.hpp"
+#include "Checker.hpp"
 
 class VersionChecker:public Checker{
 public:
-    int execute(void) {
+    VersionChecker(Version& ver):itsVer(ver){}
+    int execute(const string& client, const FileID& server) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        Version ver(itsDestDir, itsName, itsDir);
-        int cv=ver.read(CLIENT);
-        int sv=ver.read(SERVER);
-        if (cv>sv) {
+        // return SERVER_NEW;
+        int vc=itsVer.read(CLIENT, server);
+        int vs=itsVer.read(SERVER, server);
+        if (vc>vs){
             return CLIENT_NEW;
-        } else if (cv<sv) {
+        } else if(vc<vs){
             return SERVER_NEW;
         } else {
             return EQUAL;
         }
     }
-
-    VersionChecker(string& destDir, string& name, string& dir):Checker(destDir, name, dir){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-    }
+private:
+    Version& itsVer;
 };
-
-
 
 #endif /* VERSIONCHECKER_H */
