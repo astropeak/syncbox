@@ -16,8 +16,20 @@ public:
         path p1(client);
         path p2(itsDestDir+"/"+server.getPath());
 
-        std::time_t t1=last_write_time(p1);
-        std::time_t t2=last_write_time(p2);
+        std::time_t t1=-1, t2=-1;
+        if (!exists(p1)) {
+            cout<<" file not exists: "<<client<<endl;
+            t1=-1;
+        } else {
+            t1=last_write_time(p1);
+        }
+
+        if (!exists(p2)){
+            cout<<" file not exists: "<<server.getPath()<<endl;
+            t2=-2;
+        } else {
+            t2=last_write_time(p2);
+        }
 
         if (t1>t2){
             return CLIENT_NEW;

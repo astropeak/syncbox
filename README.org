@@ -36,8 +36,6 @@ public:
 };
       #+end_src
 
-
-
 *** compile and run
     #+begin_src sh
     cd ANY_EMPTY_DIR
@@ -45,3 +43,19 @@ public:
     make # build
     ./aaa #run
     #+end_src
+
+*** handle file deleteing and addind operation
+    Add some return values for Checker::execute, SERVER_DELETED, CLIENT_DELETED, SERVER_ADDED, CLIENT_ADDED. Then the SyncTrans class can make use of these return value to do right thing.
+    Add a new subclass to Checker to implement the new function, such AddedChecker, DeletedChecker, then combine it with VersionTimeStampChecker. Sounds good.
+
+    Class File should add a new method to delete files, just name it 'delete'. Should accept a parameter specifing server or client side.
+
+*** handle many files
+    SyncFiles class. Sync a list of files. Provide many constructors to specifing files, such as a list of file names and directory names, a config file containing the file list.
+    It also bind the relationship of file names between server side and client side.
+    It accept the same File& and Checker& parameter as SyncTrans class.
+** Thinking in design
+   - When the module is small, it is easy to debug and modify some codes.
+** Problems
+   - SyncFiles depends on PathFildID. In its execute function.
+   - file deletion and adding is not handled correctly.

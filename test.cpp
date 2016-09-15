@@ -6,12 +6,12 @@
 #include "PathFileID.hpp"
 #include "LocalVersion.hpp"
 #include "VersionTimeStampChecker.hpp"
+#include "SyncFiles.hpp"
 
 int main(int argc, char *argv[])
 {
     string destDir = "/home/astropeak/tmp/localFile";
     string name=        "tmp/github/files/README.md";
-    string dir = "/cygdrive/e/home";
 
     LocalFile file1;
     file1.setDestDir(destDir);
@@ -28,11 +28,20 @@ int main(int argc, char *argv[])
     VersionTimeStampChecker verTsChk(verChk, tsChk);
 
     SyncTrans syncTrans(file, verTsChk);
-    string from=dir+"/"+name;
+    // string from=dir+"/"+name;
+    string files1[]={
+        "tmp/github/files/README.md",
+        "tmp/1.c",
+        "xj/1234.VSP"
+                          };
+
+    vector<string> files(files1, files1+sizeof(files1)/sizeof(files1[0]));
+    string dir = "/home/astropeak";
+    SyncFiles syncFiles(syncTrans, files, dir);
     int t=0;
     while(true) {
         cout<<"\n==== "<<t<<" ====\n";
-        syncTrans.execute(from, PathFileID(name));
+        syncFiles.execute();
         sleep(2);
         t+=2;
     }
