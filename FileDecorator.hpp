@@ -31,6 +31,14 @@ public:
         int v1 = itsVer.read(SERVER, from);
         itsVer.write(CLIENT, from, v1);
     }
+    int remove(const FileID& server) {
+        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        itsFile.remove(server);
+    }
+    int remove(const string& client) {
+        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        itsFile.remove(client);
+    }
 
 private:
     File& itsFile;

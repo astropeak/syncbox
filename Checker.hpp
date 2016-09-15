@@ -10,5 +10,11 @@ static const int SERVER_NEW=1;
 static const int CLIENT_NEW=2;
 static const int BOTH_NEW=3;
 static const int EQUAL=4;
+static const int SERVER_ADDED=5;
+static const int CLIENT_ADDED=6;
+static const int SERVER_DELETED=7;
+static const int CLIENT_DELETED=8;
+static const int BOTH_DELETED=9;
+
 
 #endif /* CHECKER_H */

@@ -19,14 +19,16 @@ public:
         std::time_t t1=-1, t2=-1;
         if (!exists(p1)) {
             cout<<" file not exists: "<<client<<endl;
-            t1=-1;
+            // t1=-1;
+            return EQUAL;
         } else {
             t1=last_write_time(p1);
         }
 
         if (!exists(p2)){
             cout<<" file not exists: "<<server.getPath()<<endl;
-            t2=-2;
+            t2=-1;
+            return EQUAL;
         } else {
             t2=last_write_time(p2);
         }

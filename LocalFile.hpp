@@ -18,6 +18,12 @@ public:
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         copy(itsDestDir+"/"+from.getPath(), to);
     }
+    virtual int remove(const FileID& server) {
+        itsRemove(itsDestDir+"/"+server.getPath());
+    }
+    virtual int remove(const string& client) {
+        itsRemove(client);
+    }
 
     static void setDestDir(const string& destDir){
         itsDestDir=destDir;
@@ -38,6 +44,11 @@ private:
         std::time_t t1=last_write_time(src);
         last_write_time(dest, t1);
     }
+    int itsRemove(const string& name){
+        path pt(name);
+        boost::filesystem::remove(pt);
+    }
+
     static string itsDestDir;
 };
 string LocalFile::itsDestDir;

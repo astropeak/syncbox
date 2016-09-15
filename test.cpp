@@ -6,6 +6,7 @@
 #include "PathFileID.hpp"
 #include "LocalVersion.hpp"
 #include "VersionTimeStampChecker.hpp"
+#include "ExistVersionTimeStampChecker.hpp"
 #include "SyncFiles.hpp"
 
 int main(int argc, char *argv[])
@@ -25,15 +26,18 @@ int main(int argc, char *argv[])
     LocalTimeStampChecker tsChk;
     tsChk.setDestDir(destDir);
     VersionChecker verChk(ver);
-    VersionTimeStampChecker verTsChk(verChk, tsChk);
+    ExistChecker exChk;
+    exChk.setDestDir(destDir);
+    // VersionTimeStampChecker verTsChk(verChk, tsChk);
+    ExistVersionTimeStampChecker exVerTsChk(exChk, verChk, tsChk);
 
-    SyncTrans syncTrans(file, verTsChk);
+    SyncTrans syncTrans(file, exVerTsChk);
     // string from=dir+"/"+name;
     string files1[]={
         "tmp/github/files/README.md",
         "tmp/1.c",
         "xj/1234.VSP"
-                          };
+    };
 
     vector<string> files(files1, files1+sizeof(files1)/sizeof(files1[0]));
     string dir = "/home/astropeak";
