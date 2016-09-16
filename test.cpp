@@ -46,11 +46,12 @@ int main(int argc, char *argv[])
     vector<string> files(files1, files1+sizeof(files1)/sizeof(files1[0]));
     SyncFiles syncFiles(syncTrans, files, localHome);
     int t=0;
+    int period=2;
     while(true) {
-        cout<<"\n==== "<<t<<" ====\n";
+        // cout<<"\n==== "<<t<<" ====\n";
         syncFiles.execute();
-        sleep(2);
-        t+=2;
+        sleep(period);
+        t++;
     }
 
     return 0;

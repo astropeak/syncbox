@@ -17,10 +17,10 @@ public:
         // the logic seems complicated. Thanksfully I made this part independent!!
         // but maybe I can implement a simple one now only for test!!
         if (ex==CLIENT_EXIST) {
-            if (ver==BOTH_NOT_EXIST) return CLIENT_ADDED;
+            if (ver==BOTH_NOT_EXIST || ver==SERVER_EXIST) return CLIENT_ADDED; //client ver not exist
             else return SERVER_DELETED;
         } else if (ex==SERVER_EXIST) {
-            if (ver==SERVER_EXIST) return SERVER_ADDED;//client ver not exist,
+            if (ver==SERVER_EXIST || ver== BOTH_NOT_EXIST) return SERVER_ADDED;//client ver not exist,
             else return CLIENT_DELETED;
         } else if(ex==BOTH_EXIST){
             return vt;

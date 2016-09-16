@@ -22,7 +22,7 @@ public:
         // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         map<string, string>::iterator iter = itsFiles.begin();
         while(iter != itsFiles.end()) {
-            cout<<"\n### Sync file: "<<iter->first<<endl;
+            // cout<<"\n### Sync file: "<<iter->first<<endl;
             itsSt.execute(iter->first, PathFileID(iter->second));
             ++iter;
         }

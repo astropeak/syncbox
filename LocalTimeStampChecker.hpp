@@ -18,7 +18,7 @@ public:
 
         std::time_t t1=-1, t2=-1;
         if (!exists(p1)) {
-            cout<<" file not exists: "<<client<<endl;
+            // cout<<" file not exists: "<<client<<endl;
             // t1=-1;
             return EQUAL;
         } else {
@@ -26,7 +26,7 @@ public:
         }
 
         if (!exists(p2)){
-            cout<<" file not exists: "<<server.getPath()<<endl;
+            // cout<<" file not exists: "<<server.getPath()<<endl;
             t2=-1;
             return EQUAL;
         } else {

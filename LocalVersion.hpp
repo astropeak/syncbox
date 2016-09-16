@@ -56,7 +56,7 @@ public:
 private:
     string sub(const string& a, const string& b){
         string s(a.c_str() + b.length());
-        cout<<" sub resutl: "<<s<<endl;
+        // cout<<" sub resutl: "<<s<<endl;
         return s;
     }
 
@@ -82,7 +82,7 @@ private:
         path p(name);
 
         if (!exists(p)) {
-            cout<<" file not exists: "<<name<<endl;
+            // cout<<" file not exists: "<<name<<endl;
             return -1;
         }
 
@@ -90,7 +90,7 @@ private:
         iff.open(name.c_str());
         int ver=-1;
         iff>>ver;
-        cout<<" ver:"<<ver<<endl;
+        // cout<<" ver:"<<ver<<endl;
         iff.close();
         return ver;
     }

@@ -31,7 +31,7 @@ public:
 private:
     int copy(const string& from, const string& to) {
         // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        cout<<"from: "<<from<<", to: "<<to<<endl;
+        // cout<<"from: "<<from<<", to: "<<to<<endl;
         path src(from);
         path dest(to);
 

@@ -19,7 +19,7 @@ public:
                 cout<<" #### ERROR ####. Server version new, while client timestamp new. Return BOTH_NEW. (Manually merge needed)"<<endl;
                 return BOTH_NEW;
             } else if (tsc==SERVER_NEW){
-                cout<<" Server version new and time stamp new"<<endl;
+                // cout<<" Server version new and time stamp new"<<endl;
                 return SERVER_NEW;
             } else {
                 cout<<" #### Warning ####. Server version new but timestamp the same. Return SERVER_NEW"<<endl;
@@ -30,13 +30,13 @@ public:
             return tsc;
         } else { //vc equal
             if (tsc==CLIENT_NEW){
-                cout<<" Version the same, client time stamp new. Return CLIENT_NEW"<<endl;
+                // cout<<" Version the same, client time stamp new. Return CLIENT_NEW"<<endl;
                 return CLIENT_NEW;
             } else if (tsc==SERVER_NEW) {
                 cout<<" #### ERROR ####. Version the same, but server's time stamp new. Return SERVER_NEW"<<endl;
                 return SERVER_NEW;
             } else { //tsc equal
-                cout<<" Both version and time stamp the same. Return EQUAL"<<endl;
+                // cout<<" Both version and time stamp the same. Return EQUAL"<<endl;
                 return EQUAL;
             }
         }
