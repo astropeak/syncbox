@@ -7,7 +7,7 @@ class VersionChecker:public Checker{
 public:
     VersionChecker(Version& ver):itsVer(ver){}
     int execute(const string& client, const FileID& server) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         // return SERVER_NEW;
         int vc=itsVer.read(CLIENT, server);
         int vs=itsVer.read(SERVER, server);

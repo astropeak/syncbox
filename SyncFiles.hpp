@@ -19,7 +19,7 @@ public:
     }
 
     int execute(void){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         map<string, string>::iterator iter = itsFiles.begin();
         while(iter != itsFiles.end()) {
             cout<<"\n### Sync file: "<<iter->first<<endl;

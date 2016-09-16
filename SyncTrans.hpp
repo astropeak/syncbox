@@ -4,7 +4,7 @@
 class SyncTrans {
 public:
     int execute(const string& client, const FileID& server) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         int status = itsChk.execute(client, server);
         cout<<" check status: "<<status<<endl;
         if (status == CLIENT_NEW || status==CLIENT_ADDED) {
@@ -28,7 +28,7 @@ public:
         }
     }
     SyncTrans(File& file, Checker& chk):itsFile(file), itsChk(chk) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         // do nothing
     }
 private:

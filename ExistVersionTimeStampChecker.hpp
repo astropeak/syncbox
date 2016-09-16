@@ -9,7 +9,7 @@ public:
         itsEx(ex), itsVer(ver), itsTs(ts){}
 
     int execute(const string& client, const FileID& server) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         int ex = itsEx.execute(client, server);
         VersionTimeStampChecker verTs(itsVer, itsTs);
         int vt = verTs.execute(client, server);

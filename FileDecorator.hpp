@@ -7,11 +7,11 @@
 class FileDecorator:public File {
 public:
     FileDecorator(File& file, Version& ver):itsFile(file),itsVer(ver) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
     }
 
     int write(const string& from, const FileID& to){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile.write(from, to);
 
         // update version info;
@@ -24,7 +24,7 @@ public:
         itsVer.write(SERVER, to, v+1);
     }
     int read(const FileID& from, const string& to){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile.read(from, to);
 
         // update version info;
@@ -32,12 +32,12 @@ public:
         itsVer.write(CLIENT, from, v1);
     }
     int remove(const FileID& server) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile.remove(server);
         itsVer.remove(SERVER, server);
     }
     int remove(const string& client) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile.remove(client);
         itsVer.remove(CLIENT, client);
     }

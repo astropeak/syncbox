@@ -8,7 +8,7 @@ public:
         itsDestDir=destDir;
     }
     int execute(const string& client, const FileID& server){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         path p1(client);
         path p2(itsDestDir+"/"+server.getPath());
 

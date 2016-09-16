@@ -16,7 +16,7 @@ using namespace boost::filesystem;
 class LocalVersion: public Version {
 public:
     int write(int loc, const FileID& id, int ver) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         if (loc == CLIENT){
             // cout<<" wriet client ver: "<<ver<<endl;
             writeVer(itsClientHomeDir+"/"+id.getPath(), ver);
@@ -27,7 +27,7 @@ public:
         }
     }
     int read(int loc, const FileID& id){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         if (loc == CLIENT) {
             // cout<<" read client ver"<<endl;
             return readVer(itsClientHomeDir+"/"+id.getPath());
@@ -61,7 +61,7 @@ private:
     }
 
     int writeVer(const string& name, int ver) {
-        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         // cout<<" name: "<<name<<", ver: "<<ver<<endl;
         //write ver to file name
         path p(name);
@@ -77,7 +77,7 @@ private:
         of.close();
     }
     int readVer(const string& name){
-        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         // cout<<" name: "<<name<<endl;
         path p(name);
 

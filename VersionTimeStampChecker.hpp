@@ -10,7 +10,7 @@ class VersionTimeStampChecker:public Checker{
 public:
     VersionTimeStampChecker(VersionChecker& ver, TimeStampChecker& ts):itsVer(ver), itsTs(ts){}
     int execute(const string& client, const FileID& server) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         // return SERVER_NEW;
         int vc = itsVer.execute(client, server);
         int tsc = itsTs.execute(client, server);

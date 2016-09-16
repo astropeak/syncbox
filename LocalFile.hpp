@@ -11,11 +11,11 @@ using namespace boost::filesystem;
 class LocalFile:public File {
 public:
     virtual int write(const string& from, const FileID& to){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         copy(from, itsDestDir + "/" + to.getPath());
     }
     virtual int read(const FileID& from, const string& to){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         copy(itsDestDir+"/"+from.getPath(), to);
     }
     virtual int remove(const FileID& server) {
@@ -30,7 +30,7 @@ public:
     }
 private:
     int copy(const string& from, const string& to) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         cout<<"from: "<<from<<", to: "<<to<<endl;
         path src(from);
         path dest(to);
