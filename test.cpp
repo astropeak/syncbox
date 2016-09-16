@@ -1,3 +1,7 @@
+#include <string>
+using namespace std;
+static string localHome = "/home/astropeak";
+
 #include "LocalFile.hpp"
 #include "LocalTimeStampChecker.hpp"
 #include "VersionChecker.hpp"
@@ -40,8 +44,7 @@ int main(int argc, char *argv[])
     };
 
     vector<string> files(files1, files1+sizeof(files1)/sizeof(files1[0]));
-    string dir = "/home/astropeak";
-    SyncFiles syncFiles(syncTrans, files, dir);
+    SyncFiles syncFiles(syncTrans, files, localHome);
     int t=0;
     while(true) {
         cout<<"\n==== "<<t<<" ====\n";

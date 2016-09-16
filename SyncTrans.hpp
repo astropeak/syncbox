@@ -6,6 +6,7 @@ public:
     int execute(const string& client, const FileID& server) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         int status = itsChk.execute(client, server);
+        cout<<" check status: "<<status<<endl;
         if (status == CLIENT_NEW || status==CLIENT_ADDED) {
             cout<<" Client new or added, push it to server"<<endl;
             itsFile.write(client, server);

@@ -37,11 +37,29 @@ public:
             return readVer(itsServerHomeDir+"/"+id.getPath()+".version");
         }
     }
+
+    int remove(int loc, const FileID& server){
+        path p(itsServerHomeDir+"/"+server.getPath());
+        boost::filesystem::remove(p);
+        return 1;
+    }
+    int remove(int loc, const string& client){
+        path p(itsClientHomeDir+"/"+ sub(client, localHome));
+        boost::filesystem::remove(p);
+        return 1;
+    }
+
     static void setDirs(const string client, const string server){
         itsClientHomeDir=client;
         itsServerHomeDir=server;
     }
 private:
+    string sub(const string& a, const string& b){
+        string s(a.c_str() + b.length());
+        cout<<" sub resutl: "<<s<<endl;
+        return s;
+    }
+
     int writeVer(const string& name, int ver) {
         // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         // cout<<" name: "<<name<<", ver: "<<ver<<endl;
@@ -65,7 +83,7 @@ private:
 
         if (!exists(p)) {
             cout<<" file not exists: "<<name<<endl;
-            return 0;
+            return -1;
         }
 
         std::ifstream iff;

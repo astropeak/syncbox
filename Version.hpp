@@ -10,6 +10,8 @@ class Version {
 public:
     virtual int write(int loc, const FileID& id, int ver)=0;
     virtual int read(int loc, const FileID& id)=0;
+    virtual int remove(int loc, const FileID& server)=0;
+    virtual int remove(int loc, const string& client)=0;
 };
 
 #endif /* VERSION_H */

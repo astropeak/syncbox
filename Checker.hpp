@@ -16,5 +16,10 @@ static const int SERVER_DELETED=7;
 static const int CLIENT_DELETED=8;
 static const int BOTH_DELETED=9;
 
+static const int SERVER_EXIST=11;
+static const int CLIENT_EXIST=12;
+static const int BOTH_EXIST=13;
+static const int BOTH_NOT_EXIST=14;
+
 
 #endif /* CHECKER_H */

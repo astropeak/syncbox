@@ -34,10 +34,12 @@ public:
     int remove(const FileID& server) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile.remove(server);
+        itsVer.remove(SERVER, server);
     }
     int remove(const string& client) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         itsFile.remove(client);
+        itsVer.remove(CLIENT, client);
     }
 
 private:

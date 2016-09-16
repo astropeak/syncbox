@@ -1,11 +1,6 @@
 #ifndef EXISTCHECKER_H
 #define EXISTCHECKER_H
 
-static const int SERVER_EXIST=1;
-static const int CLIENT_EXIST=2;
-static const int BOTH_EXIST=3;
-static const int BOTH_NOT_EXIST=4;
-
 //note: this is actual the LocalExistChecker.
 class ExistChecker:public Checker{
 public:

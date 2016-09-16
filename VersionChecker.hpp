@@ -11,12 +11,25 @@ public:
         // return SERVER_NEW;
         int vc=itsVer.read(CLIENT, server);
         int vs=itsVer.read(SERVER, server);
-        if (vc>vs){
-            return CLIENT_NEW;
-        } else if(vc<vs){
-            return SERVER_NEW;
+
+        if (vc==-1) {
+            if(vs==-1){
+                return BOTH_NOT_EXIST;
+            } else {
+                return SERVER_EXIST;
+            }
         } else {
-            return EQUAL;
+            if (vs==-1) {
+                return CLIENT_EXIST;
+            } else {
+                if (vc>vs){
+                    return CLIENT_NEW;
+                } else if(vc<vs){
+                    return SERVER_NEW;
+                } else {
+                    return EQUAL;
+                }
+            }
         }
     }
 private:
