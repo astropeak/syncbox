@@ -18,21 +18,21 @@ public:
     int write(int loc, const FileID& id, int ver) {
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         if (loc == CLIENT){
-            cout<<" wriet client ver: "<<ver<<endl;
+            // cout<<" wriet client ver: "<<ver<<endl;
             writeVer(itsClientHomeDir+"/"+id.getPath(), ver);
         }
         else {
-            cout<<" wriet server ver: "<<ver<<endl;
+            // cout<<" wriet server ver: "<<ver<<endl;
             writeVer(itsServerHomeDir+"/"+ id.getPath() +".version", ver);
         }
     }
     int read(int loc, const FileID& id){
         cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
         if (loc == CLIENT) {
-            cout<<" read client ver"<<endl;
+            // cout<<" read client ver"<<endl;
             return readVer(itsClientHomeDir+"/"+id.getPath());
         } else {
-            cout<<" read server ver"<<endl;
+            // cout<<" read server ver"<<endl;
             path p(id.getPath());
             return readVer(itsServerHomeDir+"/"+id.getPath()+".version");
         }
@@ -43,8 +43,8 @@ public:
     }
 private:
     int writeVer(const string& name, int ver) {
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        cout<<" name: "<<name<<", ver: "<<ver<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<" name: "<<name<<", ver: "<<ver<<endl;
         //write ver to file name
         path p(name);
         path pdir(p.parent_path());
@@ -59,8 +59,8 @@ private:
         of.close();
     }
     int readVer(const string& name){
-        cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
-        cout<<" name: "<<name<<endl;
+        // cout<<__FILE__<<":"<<__LINE__<<", "<<__FUNCTION__<<endl;
+        // cout<<" name: "<<name<<endl;
         path p(name);
 
         if (!exists(p)) {
