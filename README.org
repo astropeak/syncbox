@@ -58,4 +58,45 @@ public:
    - When the module is small, it is easy to debug and modify some codes.
 ** Problems
    - SyncFiles depends on PathFildID. In its execute function.
-   - file deletion and adding is not handled correctly.
+   - {DONE}file deletion and adding is not handled correctly.
+   - Should use one parameter(a FileID) to access to the local and server path for a file. All functions that accept two, such LocalFile's all function.  
+     FileID should provide two method: getServerPath, getClientPath. Then it can be the only parameter for File, Version, Checker.
+   - Add a general class to access file infos, such Version, time stamp, exist.
+   - As more functions added, the original design start to have problem. Bad smell start to exists. And the code should be refactory. 
+
+     Maybe this is the way how software is developed.
+     At the begining, I think the design is quite good, it can adpat to any change. But now problems exists.
+     A good architecture and bad architecture: the formar can construct a more adaptive acchitect.
+
+** When ssh backend should be supported, the impelementation idea
+   I should implement LocalFile, LocalVersion, LocalTImeStampChecker, LocalExistChecker's ssh version. That's the all difference.
+   But the implementation seems not that easy. And there are efficiency problem. So I don't feel good.
+   Add I found some differences that don't extracted when implementing Local*, that is get information of files, such as version(this is extracted already), timestamp, exists.
+
+   Another problem is that for abstract class, the FileID is not easy to use. Because some implementation details are hide, but it is needed some where(such as the DestDir). *I think for such cases, a better way is using general API in general algorithm, but downcast to specific API in a real implementation*. One example: FileID maybe designed this way:
+   #+begin_src C++ :includes <iostream>
+   using namespace std;
+   class FileID{
+     virtual FileIDInfo getServerIDInfo();
+     virtual FileIDInfo getClientIDInfo();
+   };
+   class FileIDInfo{
+     virtual ~FileIDInfo()=0;
+   };
+   class SshFileIDInfo:public FileIDInfo{
+     string getHost();
+     string getIdFile();
+     string getHome();
+     string getRelativeName();
+     string getUserName();
+   };
+   class LocalFileIDInfo:public FileIDInfo{
+     string getRelativeName();
+     string getHome();
+     string getConfigHome();
+   }
+   #+end_src
+   Use factory pattern to create a concrete FileID, then pass it to SyncTrans, which will pass it to Checker, File classes. Then in one concrete class such as LocalVersion, it will *downcast the FileIDInfo type to LocalFileIDInfo* to access getRelativeName() and getHome(); but for another concrete class such as SshVersion, it will *downcast the FileIDInfo type to SshFileIDInfo* to access getHost(), getIdFile() methods. Such kind of donwcast are safe and accepetable, because *a FileIDInfo in class SshVersion must be a SshFileIDInfo*, or there must be something wrong.
+
+   Note: A FileID designed in such way act as a big global data. It makes things simple.
+
