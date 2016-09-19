@@ -56,6 +56,13 @@ public:
     It accept the same File& and Checker& parameter as SyncTrans class.
 ** Thinking in design
    - When the module is small, it is easy to debug and modify some codes.
+*** 软件的分总分结构
+    上层的处理一般较通用，但下层会有较多变化。
+    方法一：在上层实现中， 根据if else分别处理不同的下层
+    方法二：将不同的下层封装，抽象出公共概念、操作接口，然后上层只使用这个公共接口，上层的处理流程完全一致。在公共处理中，不得使用down cast到具体下层类。如果非要使用，则把下层的抽象接口再往上提一层，从而将这个down cast转移到一个具体的下层实现类。
+    工厂模式用在第一个分，模板方法是总，策略、状态等模式是第二个分。
+    
+    那观察者模式解决什么问题呢？ 一对多的关系，事件处理。将轮询变为中断。
 ** Problems
    - SyncFiles depends on PathFildID. In its execute function.
    - {DONE}file deletion and adding is not handled correctly.
@@ -99,4 +106,5 @@ public:
    Use factory pattern to create a concrete FileID, then pass it to SyncTrans, which will pass it to Checker, File classes. Then in one concrete class such as LocalVersion, it will *downcast the FileIDInfo type to LocalFileIDInfo* to access getRelativeName() and getHome(); but for another concrete class such as SshVersion, it will *downcast the FileIDInfo type to SshFileIDInfo* to access getHost(), getIdFile() methods. Such kind of donwcast are safe and accepetable, because *a FileIDInfo in class SshVersion must be a SshFileIDInfo*, or there must be something wrong.
 
    Note: A FileID designed in such way act as a big global data. It makes things simple.
+
 
