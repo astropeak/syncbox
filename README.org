@@ -108,3 +108,13 @@ public:
    Note: A FileID designed in such way act as a big global data. It makes things simple.
 
 
+** V2 implementation
+   The structure finished.
+   Changes:
+   - since the checker is the same, so it can be created inside SyncTrans, instead of passing as parameter in constructor.
+   - Now only File class is the varing part.
+   - The design is quite simple now. Much better than V1.
+
+   Tue Sep 20 17:13:32 2016
+   LocalFile Stream implemented. using boost::iostreams::stream class template. write to a output stream and read from an input stream now works(copy file works now).
+
