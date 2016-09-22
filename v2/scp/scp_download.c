@@ -163,7 +163,7 @@ static int fetch_files(ssh_session session){
   return 0;
 }
 
-int main(int argc, char **argv){
+int main_2222(int argc, char **argv){
   ssh_session session;
   if(opts(argc,argv)<0)
     return EXIT_FAILURE;

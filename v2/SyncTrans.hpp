@@ -21,8 +21,8 @@ public:
 
         if (status == CLIENT_NEW || status==CLIENT_ADDED) {
             cout<<"Client new or added, push it to server. "<<endl;
-            istream* is= itsFile1.getIstream(path1);
             ostream* os= itsFile2.getOstream(path2);
+            istream* is= itsFile1.getIstream(path1);
             (*os)<<is->rdbuf();
             delete is;
             delete os;
